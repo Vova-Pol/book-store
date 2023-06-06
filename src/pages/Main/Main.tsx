@@ -2,28 +2,28 @@ import React, { useEffect } from 'react';
 import './Main.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { BOOKS_URL } from '../../utils/constants';
-import { ACTIONS } from '../../store';
+import { ACTION_TYPES } from '../../store';
 
 export const Main = () => {
   const dispatch = useDispatch();
   const booksState = useSelector((state) => state);
 
   useEffect(() => {
-    dispatch({ type: ACTIONS.GET_BOOKS_SEND_REQ });
+    dispatch({ type: ACTION_TYPES.GET_BOOKS_SEND_REQ });
 
     fetch(BOOKS_URL)
       .then((res) => {
         if (res.ok) {
           return res.json();
         } else {
-          return Promise.reject('Произошла ошибка');
+          return Promise.reject({ message: 'Произошла ошибка' });
         }
       })
       .then((data) => {
-        dispatch({ type: ACTIONS.GET_BOOKS_SUCCESS, payload: data.books });
+        dispatch({ type: ACTION_TYPES.GET_BOOKS_SUCCESS, payload: data.books });
       })
       .catch((err) => {
-        dispatch({ type: ACTIONS.GET_BOOKS_ERROR, payload: err });
+        dispatch({ type: ACTION_TYPES.GET_BOOKS_ERROR, payload: err.message });
       });
   }, []);
 
