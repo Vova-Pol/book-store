@@ -1,0 +1,9 @@
+@import '../../styles/constants.scss';
+
+.main {
+  @include sectionPadding(0, 0);
+}
+
+.main__title {
+  @include title($h1Size, $h1Weight);
+}

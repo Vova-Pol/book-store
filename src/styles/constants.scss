@@ -9,10 +9,12 @@ $brownDark: #282828;
 
 $textColorMain: #fff;
 
-// Side Padding
+// Sections Paddings & Margins
 @mixin sectionPadding($top, $bottom) {
   padding: $top 50px $bottom 50px;
 }
+
+$sectionMargin: 60px;
 
 // Hovers
 
@@ -26,3 +28,14 @@ $textColorMain: #fff;
 @mixin hoverTransition($dur) {
   transition: all $dur ease;
 }
+
+// Titles
+
+@mixin title($size, $weight) {
+  text-align: center;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+$h1Size: 40px;
+$h1Weight: 200;
