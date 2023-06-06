@@ -1,50 +1,11 @@
 import { createStore } from 'redux';
+import { BooksState, Action, ACTION_TYPES } from '../types';
 
 const initialState = {
   isLoading: false,
   error: '',
   data: [],
 };
-
-interface BooksState {
-  isLoading: boolean;
-  error: string;
-  data: Book[];
-}
-
-interface Book {
-  title: string;
-  subtitle: string;
-  isbn13: string;
-  price: string;
-  image: string;
-  url: string;
-}
-
-export enum ACTION_TYPES {
-  GET_BOOKS_SEND_REQ = 'GET_BOOKS_SEND_REQ',
-  GET_BOOKS_ERROR = 'GET_BOOKS_ERROR',
-  GET_BOOKS_SUCCESS = 'GET_BOOKS_SUCCESS',
-}
-
-interface GetBooksSendReqAction {
-  type: ACTION_TYPES.GET_BOOKS_SEND_REQ;
-}
-
-interface GetBooksErrorAction {
-  type: ACTION_TYPES.GET_BOOKS_ERROR;
-  payload: string;
-}
-
-interface GetBooksSuccessAction {
-  type: ACTION_TYPES.GET_BOOKS_SUCCESS;
-  payload: Book[];
-}
-
-type Action =
-  | GetBooksErrorAction
-  | GetBooksSendReqAction
-  | GetBooksSuccessAction;
 
 const booksReducer = (
   state: BooksState = initialState,
