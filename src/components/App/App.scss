@@ -3,7 +3,6 @@
 body {
   box-sizing: border-box;
   background-color: $backgroundMain;
-  color: $textColorMain;
 }
 
 h1,
@@ -23,5 +22,15 @@ ul {
 
 a {
   text-decoration: none;
-  color: black;
+  color: $textColorMain;
+  @include textHover(0.8, -4px);
+  @include hoverTransition(0.3s);
+}
+
+.app {
+  max-width: 1440px;
+  color: $textColorMain;
+  font-size: 18px;
+  font-family: 'Geologica', sans-serif;
+  font-weight: 300;
 }

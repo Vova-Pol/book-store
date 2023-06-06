@@ -2,8 +2,27 @@
 $backgroundLight: #ccdad1ff;
 $backgroundMain: #9caea9ff;
 $backgroundDark: #788585ff;
-$dim-gray: #6f6866ff;
-$van-dyke: #38302eff;
-$textColorMain: #282828;
 
-//
+$brownLight: #6f6866ff;
+$brownMid: #38302eff;
+$brownDark: #282828;
+
+$textColorMain: #fff;
+
+// Side Padding
+@mixin sectionPadding($top, $bottom) {
+  padding: $top 50px $bottom 50px;
+}
+
+// Hovers
+
+@mixin textHover($opacity, $transform) {
+  &:hover {
+    opacity: $opacity;
+    transform: translateY($transform);
+  }
+}
+
+@mixin hoverTransition($dur) {
+  transition: all $dur ease;
+}

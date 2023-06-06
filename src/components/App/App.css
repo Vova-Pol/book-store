@@ -1,7 +1,6 @@
 body {
   box-sizing: border-box;
   background-color: #9caea9;
-  color: #282828;
 }
 
 h1,
@@ -21,5 +20,19 @@ ul {
 
 a {
   text-decoration: none;
-  color: black;
-}/*# sourceMappingURL=App.css.map */
+  color: #fff;
+  transition: all 0.3s ease;
+}
+a:hover {
+  opacity: 0.8;
+  -webkit-transform: translateY(-4px);
+          transform: translateY(-4px);
+}
+
+.app {
+  max-width: 1440px;
+  color: #fff;
+  font-size: 18px;
+  font-family: "Geologica", sans-serif;
+  font-weight: 300;
+}
