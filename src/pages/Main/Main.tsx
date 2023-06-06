@@ -3,6 +3,7 @@ import './Main.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { BOOKS_URL } from '../../utils/constants';
 import { ACTION_TYPES } from '../../store';
+import { getBooks } from '../../utils/utils';
 
 export const Main = () => {
   const dispatch = useDispatch();
@@ -11,14 +12,7 @@ export const Main = () => {
   useEffect(() => {
     dispatch({ type: ACTION_TYPES.GET_BOOKS_SEND_REQ });
 
-    fetch(BOOKS_URL)
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return Promise.reject({ message: 'Произошла ошибка' });
-        }
-      })
+    getBooks(BOOKS_URL)
       .then((data) => {
         dispatch({ type: ACTION_TYPES.GET_BOOKS_SUCCESS, payload: data.books });
       })
