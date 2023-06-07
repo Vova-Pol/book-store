@@ -1,0 +1,56 @@
+@import '../../styles/constants.scss';
+
+.card {
+  border-radius: 50px;
+  border: 3px solid $brownLight;
+  max-width: 250px;
+}
+
+.card__image {
+  width: 100%;
+}
+
+.card__info {
+  padding: 0 20px;
+  text-align: center;
+  margin-bottom: 15px;
+}
+
+.card__title {
+  @include title($h3Size, $h3Weight, $h3MarginBottom);
+  color: $brownMid;
+  min-height: calc($h3Size * 3);
+}
+
+.card__price {
+  background-color: $brownMid;
+  border-radius: 10px;
+  padding: 10px;
+  font-size: 16px;
+  font-weight: 200;
+}
+
+.card__buttons {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  margin-bottom: 25px;
+  button {
+    color: #fff;
+    background-color: $backgroundDark;
+    border: none;
+    border-radius: 10px;
+    padding: 5px 10px;
+    cursor: pointer;
+    @include textHover(0.8, 0);
+    @include hoverTransition(0.3s);
+  }
+}
+
+.card__cart-button {
+  width: 60%;
+}
+
+.card__favourite-button {
+  width: 30%;
+}
