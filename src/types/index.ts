@@ -1,7 +1,7 @@
 export interface BooksState {
   isLoading: boolean;
   error: string;
-  data: Book[];
+  booksList: Book[];
 }
 
 export interface Book {

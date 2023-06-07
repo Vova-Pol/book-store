@@ -1,10 +1,12 @@
-import { createStore } from 'redux';
+import { combineReducers, createStore } from 'redux';
 import { BooksState, Action, ACTION_TYPES } from '../types';
+import { applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 const initialState = {
   isLoading: false,
   error: '',
-  data: [],
+  booksList: [],
 };
 
 const booksReducer = (
@@ -13,17 +15,33 @@ const booksReducer = (
 ): BooksState => {
   switch (action.type) {
     case ACTION_TYPES.GET_BOOKS_SEND_REQ:
-      return { ...state, isLoading: true, error: '', data: [] };
+      return { ...state, isLoading: true, error: '', booksList: [] };
 
     case ACTION_TYPES.GET_BOOKS_ERROR:
-      return { ...state, isLoading: false, error: action.payload, data: [] };
+      return {
+        ...state,
+        isLoading: false,
+        error: action.payload,
+        booksList: [],
+      };
 
     case ACTION_TYPES.GET_BOOKS_SUCCESS:
-      return { ...state, isLoading: false, error: '', data: action.payload };
+      return {
+        ...state,
+        isLoading: false,
+        error: '',
+        booksList: action.payload,
+      };
 
     default:
       return state;
   }
 };
 
-export const store = createStore(booksReducer);
+const rootReducer = combineReducers({
+  booksState: booksReducer,
+});
+
+export type RootState = ReturnType<typeof store.getState>;
+
+export const store = createStore(rootReducer, applyMiddleware(thunk));
