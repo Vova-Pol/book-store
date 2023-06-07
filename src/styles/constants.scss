@@ -31,11 +31,17 @@ $sectionMargin: 60px;
 
 // Titles
 
-@mixin title($size, $weight) {
+@mixin title($size, $weight, $bottom) {
   text-align: center;
   font-size: $size;
   font-weight: $weight;
+  margin-bottom: $bottom;
 }
 
 $h1Size: 40px;
-$h1Weight: 200;
+$h1Weight: 100;
+$h1MarginBottom: 40px;
+
+$h3Size: 18px;
+$h3Weight: 200;
+$h3MarginBottom: 20px;
