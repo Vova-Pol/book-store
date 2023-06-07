@@ -1,6 +1,6 @@
 import { ACTION_TYPES } from '../types';
-import { sendGetRequest } from '../utils/utils';
-import { BOOKS_URL } from '../utils/constants';
+import { sendGetRequest } from '../../utils/utils';
+import { BOOKS_URL } from '../../utils/constants';
 import { Dispatch } from 'redux';
 
 export const getBooksList = () => {

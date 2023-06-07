@@ -1,17 +1,4 @@
-export interface BooksState {
-  isLoading: boolean;
-  error: string;
-  booksList: Book[];
-}
-
-export interface Book {
-  title: string;
-  subtitle: string;
-  isbn13: string;
-  price: string;
-  image: string;
-  url: string;
-}
+import { Book } from './states';
 
 export enum ACTION_TYPES {
   GET_BOOKS_SEND_REQ = 'GET_BOOKS_SEND_REQ',

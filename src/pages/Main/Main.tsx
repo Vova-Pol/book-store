@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import './Main.css';
-import { Book } from '../../types';
+import { Book } from '../../store/types';
 import { useActions } from '../../hooks/useActions';
 import { useAppSelector } from '../../hooks/useTypedSelector';
 import { Card } from '../../components/Card/Card';
