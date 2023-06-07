@@ -1,31 +1,32 @@
-import React, { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import './Main.css';
-import { useDispatch, useSelector } from 'react-redux';
-import { BOOKS_URL } from '../../utils/constants';
-import { ACTION_TYPES } from '../../store';
-import { getBooks } from '../../utils/utils';
+import { Book } from '../../types';
+import { useActions } from '../../hooks/useActions';
+import { useAppSelector } from '../../hooks/useTypedSelector';
+import { Card } from '../../components/Card/Card';
 
 export const Main = () => {
-  const dispatch = useDispatch();
-  const booksState = useSelector((state) => state);
+  const { getBooksList } = useActions();
+  const { booksList, error, isLoading } = useAppSelector(
+    (state) => state.booksState,
+  );
 
   useEffect(() => {
-    dispatch({ type: ACTION_TYPES.GET_BOOKS_SEND_REQ });
-
-    getBooks(BOOKS_URL)
-      .then((data) => {
-        dispatch({ type: ACTION_TYPES.GET_BOOKS_SUCCESS, payload: data.books });
-      })
-      .catch((err) => {
-        dispatch({ type: ACTION_TYPES.GET_BOOKS_ERROR, payload: err.message });
-      });
+    getBooksList();
   }, []);
 
-  console.log(booksState);
   return (
     <div className="main">
-      <h1 className="main__title">КнигоЕд</h1>
-      <ul className="main__books-list"></ul>
+      <h1 className="main__title">Книги & Код</h1>
+      {error && <h3>Что-то пошло не так...</h3>}
+      {isLoading && <h3>Загрузка...</h3>}
+      {booksList && (
+        <ul className="main__books-list">
+          {booksList.map((book: Book, i) => {
+            return <Card key={i} {...book} />;
+          })}
+        </ul>
+      )}
     </div>
   );
 };
