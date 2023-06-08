@@ -4,15 +4,18 @@ import { Book } from '../../store/types';
 import { useActions } from '../../hooks/useActions';
 import { useAppSelector } from '../../hooks/useTypedSelector';
 import { Card } from '../../components/Card/Card';
+import { useLocalStorgae } from '../../hooks/useLocalStorage';
+import { FAVOURITES_LS_KEY } from '../../utils/constants';
 
 export const Main = () => {
   const { getBooksList } = useActions();
   const { booksList, error, isLoading } = useAppSelector(
     (state) => state.booksState,
   );
-
-  const { favouritesState } = useAppSelector((state) => state);
-  console.log(favouritesState.favourites);
+  const { getLocalStorage } = useLocalStorgae();
+  const favouritesList = getLocalStorage(FAVOURITES_LS_KEY)
+    ? getLocalStorage(FAVOURITES_LS_KEY)
+    : [];
 
   useEffect(() => {
     getBooksList();
@@ -26,7 +29,7 @@ export const Main = () => {
       {booksList && (
         <ul className="main__books-list">
           {booksList.map((book: Book, i) => {
-            return <Card key={i} {...book} />;
+            return <Card key={i} bookData={book} favourites={favouritesList} />;
           })}
         </ul>
       )}

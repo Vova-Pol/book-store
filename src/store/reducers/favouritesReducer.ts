@@ -1,8 +1,11 @@
+import { FAVOURITES_LS_KEY } from '../../utils/constants';
 import { FavouritesState } from '../types';
 import { ActionFavourites, ACTION_TYPES_FAVOURITES } from '../types';
 
 const initialState = {
-  favourites: [],
+  favourites: localStorage.getItem(FAVOURITES_LS_KEY)
+    ? JSON.parse(localStorage.getItem(FAVOURITES_LS_KEY)!)
+    : [],
 };
 
 export const favouritesReducer = (

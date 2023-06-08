@@ -18,5 +18,5 @@ export interface Book {
 // Favourites
 
 export interface FavouritesState {
-  favourites: Book[];
+  favourites: Book[] | [];
 }

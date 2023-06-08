@@ -9,19 +9,19 @@ import {
 } from 'react-icons/ai';
 import { useActions } from '../../hooks/useActions';
 
-export const Card: FC<Book> = ({
-  image,
-  price,
-  title,
-  subtitle,
-  isbn13,
-  url,
-}) => {
-  const [isLiked, setIsLiked] = useState(false);
+interface CardProps {
+  bookData: Book;
+  favourites: Book[] | [];
+}
+
+export const Card: FC<CardProps> = ({ bookData, favourites }) => {
+  const [isLiked, setIsLiked] = useState(
+    favourites.some((fav: Book) => fav.isbn13 === bookData.isbn13),
+  );
+
   const { addToFavourites, removeFromFavourites } = useActions();
 
   const handleLike: React.MouseEventHandler<HTMLButtonElement> = (evt) => {
-    const bookData = { image, price, title, subtitle, isbn13, url };
     if (isLiked) {
       removeFromFavourites(bookData);
       setIsLiked(false);
@@ -33,10 +33,10 @@ export const Card: FC<Book> = ({
 
   return (
     <li className="card">
-      <img className="card__image" src={image}></img>
+      <img className="card__image" src={bookData.image}></img>
       <div className="card__info">
-        <h3 className="card__title">{title}</h3>
-        <p className="card__price">{price}</p>
+        <h3 className="card__title">{bookData.title}</h3>
+        <p className="card__price">{bookData.price}</p>
       </div>
       <div className="card__buttons">
         <button type="button" className="card__cart-button">
