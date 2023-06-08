@@ -11,6 +11,9 @@ export const Main = () => {
     (state) => state.booksState,
   );
 
+  const { favouritesState } = useAppSelector((state) => state);
+  console.log(favouritesState.favourites);
+
   useEffect(() => {
     getBooksList();
   }, []);

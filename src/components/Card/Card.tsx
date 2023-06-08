@@ -1,4 +1,4 @@
-import { FC } from 'react';
+import { FC, useState } from 'react';
 import './Card.css';
 import { Book } from '../../store/types';
 
@@ -7,8 +7,30 @@ import {
   AiFillHeart,
   AiOutlineHeart,
 } from 'react-icons/ai';
+import { useActions } from '../../hooks/useActions';
 
-export const Card: FC<Book> = ({ image, price, title, subtitle }) => {
+export const Card: FC<Book> = ({
+  image,
+  price,
+  title,
+  subtitle,
+  isbn13,
+  url,
+}) => {
+  const [isLiked, setIsLiked] = useState(false);
+  const { addToFavourites, removeFromFavourites } = useActions();
+
+  const handleLike: React.MouseEventHandler<HTMLButtonElement> = (evt) => {
+    const bookData = { image, price, title, subtitle, isbn13, url };
+    if (isLiked) {
+      removeFromFavourites(bookData);
+      setIsLiked(false);
+    } else {
+      addToFavourites(bookData);
+      setIsLiked(true);
+    }
+  };
+
   return (
     <li className="card">
       <img className="card__image" src={image}></img>
@@ -20,8 +42,12 @@ export const Card: FC<Book> = ({ image, price, title, subtitle }) => {
         <button type="button" className="card__cart-button">
           <AiOutlineShoppingCart />
         </button>
-        <button type="button" className="card__favourite-button">
-          <AiOutlineHeart />
+        <button
+          type="button"
+          className="card__favourite-button"
+          onClick={handleLike}
+        >
+          {isLiked ? <AiFillHeart /> : <AiOutlineHeart />}
         </button>
       </div>
     </li>

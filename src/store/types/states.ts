@@ -1,3 +1,5 @@
+// Books
+
 export interface BooksState {
   isLoading: boolean;
   error: string;
@@ -11,4 +13,10 @@ export interface Book {
   price: string;
   image: string;
   url: string;
+}
+
+// Favourites
+
+export interface FavouritesState {
+  favourites: Book[];
 }

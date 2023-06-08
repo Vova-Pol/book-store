@@ -1,6 +1,6 @@
 import { BooksState } from '../types';
-import { Action } from '../types';
-import { ACTION_TYPES } from '../types';
+import { ActionGetBooks } from '../types';
+import { ACTION_TYPES_GET_BOOKS } from '../types';
 
 const initialState = {
   isLoading: false,
@@ -10,13 +10,13 @@ const initialState = {
 
 export const booksReducer = (
   state: BooksState = initialState,
-  action: Action,
+  action: ActionGetBooks,
 ): BooksState => {
   switch (action.type) {
-    case ACTION_TYPES.GET_BOOKS_SEND_REQ:
+    case ACTION_TYPES_GET_BOOKS.GET_BOOKS_SEND_REQ:
       return { ...state, isLoading: true, error: '', booksList: [] };
 
-    case ACTION_TYPES.GET_BOOKS_ERROR:
+    case ACTION_TYPES_GET_BOOKS.GET_BOOKS_ERROR:
       return {
         ...state,
         isLoading: false,
@@ -24,7 +24,7 @@ export const booksReducer = (
         booksList: [],
       };
 
-    case ACTION_TYPES.GET_BOOKS_SUCCESS:
+    case ACTION_TYPES_GET_BOOKS.GET_BOOKS_SUCCESS:
       return {
         ...state,
         isLoading: false,
