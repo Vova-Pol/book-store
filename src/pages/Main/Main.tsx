@@ -23,7 +23,7 @@ export const Main = () => {
 
   return (
     <div className="main">
-      <h1 className="main__title">Книги & Код</h1>
+      <h1 className="main__title">Топ 20 книг-новинок по программированию</h1>
       {error && <h3>Что-то пошло не так...</h3>}
       {isLoading && <h3>Загрузка...</h3>}
       {booksList && (
