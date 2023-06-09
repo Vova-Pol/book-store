@@ -34,21 +34,23 @@ export const Card: FC<CardProps> = ({ bookData, favourites }) => {
   return (
     <li className="card">
       <img className="card__image" src={bookData.image}></img>
-      <div className="card__info">
-        <h3 className="card__title">{bookData.title}</h3>
-        <p className="card__price">{bookData.price}</p>
-      </div>
-      <div className="card__buttons">
-        <button type="button" className="card__cart-button">
-          <AiOutlineShoppingCart />
-        </button>
-        <button
-          type="button"
-          className="card__favourite-button"
-          onClick={handleLike}
-        >
-          {isLiked ? <AiFillHeart /> : <AiOutlineHeart />}
-        </button>
+      <div className="card__info-container">
+        <div className="card__info">
+          <h3 className="card__title">{bookData.title}</h3>
+          <p className="card__price">{bookData.price}</p>
+        </div>
+        <div className="card__buttons">
+          <button type="button" className="card__cart-button">
+            <AiOutlineShoppingCart />
+          </button>
+          <button
+            type="button"
+            className="card__favourite-button"
+            onClick={handleLike}
+          >
+            {isLiked ? <AiFillHeart /> : <AiOutlineHeart />}
+          </button>
+        </div>
       </div>
     </li>
   );
