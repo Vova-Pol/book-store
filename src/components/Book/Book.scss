@@ -6,8 +6,28 @@
   max-width: 250px;
 }
 
+.book_layout_row {
+  display: flex;
+  width: 80%;
+  max-width: 100%;
+}
+
 .book__image {
   width: 100%;
+}
+
+.book__image_layout_row {
+  width: 25%;
+}
+
+.book__info-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+.book__info-container_layout_row {
+  width: 50%;
 }
 
 .book__info {
@@ -35,22 +55,12 @@
   justify-content: space-between;
   padding: 0 20px;
   margin-bottom: 25px;
-  button {
-    color: #fff;
-    background-color: $backgroundDark;
-    border: none;
-    border-radius: 10px;
-    padding: 5px 10px;
-    cursor: pointer;
-    @include textHover(0.8, 0);
-    @include hoverTransition(0.3s);
-  }
 }
 
 .book__cart-button {
-  width: 60%;
+  @include button($backgroundDark, #fff, 60%);
 }
 
 .book__favourite-button {
-  width: 30%;
+  @include button($backgroundDark, #fff, 30%);
 }

@@ -12,9 +12,10 @@ import { useActions } from '../../hooks/useActions';
 interface BookProps {
   bookData: IBook;
   favourites: IBook[] | [];
+  isLayoutRow: boolean;
 }
 
-export const Book: FC<BookProps> = ({ bookData, favourites }) => {
+export const Book: FC<BookProps> = ({ bookData, favourites, isLayoutRow }) => {
   const [isLiked, setIsLiked] = useState(
     favourites.some((fav: IBook) => fav.isbn13 === bookData.isbn13),
   );
@@ -32,9 +33,20 @@ export const Book: FC<BookProps> = ({ bookData, favourites }) => {
   };
 
   return (
-    <li className="book">
-      <img className="book__image" src={bookData.image}></img>
-      <div className="book__info-container">
+    <li className={isLayoutRow ? 'book book_layout_row' : 'book'}>
+      <img
+        className={
+          isLayoutRow ? 'book__image book__image_layout_row' : 'book__image'
+        }
+        src={bookData.image}
+      ></img>
+      <div
+        className={
+          isLayoutRow
+            ? 'book__info-container_layout_row book__info-container'
+            : 'book__info-container'
+        }
+      >
         <div className="book__info">
           <h3 className="book__title">{bookData.title}</h3>
           <p className="book__price">{bookData.price}</p>

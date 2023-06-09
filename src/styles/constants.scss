@@ -15,7 +15,7 @@ $textColorMain: #fff;
   padding: $top 50px $bottom 50px;
 }
 
-$sectionMargin: 60px;
+$sectionMargin: 80px;
 
 // Hovers
 
@@ -41,8 +41,25 @@ $sectionMargin: 60px;
 
 $h1Size: 40px;
 $h1Weight: 100;
-$h1MarginBottom: 40px;
+$h1MarginBottom: 70px;
 
 $h3Size: 18px;
 $h3Weight: 200;
 $h3MarginBottom: 20px;
+
+// Button
+
+@mixin button($background, $color, $width) {
+  color: $color;
+  background-color: $background;
+  width: $width;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+  @include textHover(0.8, 0);
+  @include hoverTransition(0.3s);
+}

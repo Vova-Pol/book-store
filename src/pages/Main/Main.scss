@@ -8,3 +8,16 @@
   @include title($h1Size, $h1Weight, $h1MarginBottom);
   text-shadow: 0px 1px 1px #716f6dcf;
 }
+
+.main__filters {
+  display: flex;
+  margin-bottom: 20px;
+  padding-left: 20px;
+  button {
+    @include button($headerGrey, $backgroundDark, 70px);
+  }
+}
+
+.main__column-button {
+  margin-right: 10px;
+}

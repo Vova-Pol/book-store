@@ -6,16 +6,29 @@ import { Book } from '../Book/Book';
 interface BooksListProps {
   booksList: IBook[];
   favouritesList: IBook[];
+  isLayoutRow: boolean;
 }
 
 export const BooksList: FC<BooksListProps> = ({
   booksList,
   favouritesList,
+  isLayoutRow,
 }) => {
   return (
-    <ul className="books-list">
+    <ul
+      className={
+        isLayoutRow ? 'books-list books-list_layout_row' : 'books-list'
+      }
+    >
       {booksList.map((book: IBook, i) => {
-        return <Book key={i} bookData={book} favourites={favouritesList} />;
+        return (
+          <Book
+            key={i}
+            bookData={book}
+            favourites={favouritesList}
+            isLayoutRow={isLayoutRow}
+          />
+        );
       })}
     </ul>
   );

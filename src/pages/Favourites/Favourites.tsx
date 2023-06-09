@@ -9,7 +9,11 @@ export const Favourites: FC = () => {
   return (
     <div className="favourites">
       <h1 className="favourites__title">Избранное</h1>
-      <BooksList booksList={favourites} favouritesList={favourites} />
+      <BooksList
+        booksList={favourites}
+        favouritesList={favourites}
+        isLayoutRow={true}
+      />
     </div>
   );
 };
