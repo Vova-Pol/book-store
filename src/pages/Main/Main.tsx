@@ -6,12 +6,14 @@ import { useAppSelector } from '../../hooks/useTypedSelector';
 import { Card } from '../../components/Card/Card';
 import { useLocalStorgae } from '../../hooks/useLocalStorage';
 import { FAVOURITES_LS_KEY } from '../../utils/constants';
+import { CardsList } from '../../components/App/CardsList/CardsList';
 
 export const Main = () => {
   const { getBooksList } = useActions();
   const { booksList, error, isLoading } = useAppSelector(
     (state) => state.booksState,
   );
+
   const { getLocalStorage } = useLocalStorgae();
   const favouritesList = getLocalStorage(FAVOURITES_LS_KEY)
     ? getLocalStorage(FAVOURITES_LS_KEY)
@@ -27,11 +29,7 @@ export const Main = () => {
       {error && <h3>Что-то пошло не так...</h3>}
       {isLoading && <h3>Загрузка...</h3>}
       {booksList && (
-        <ul className="main__books-list">
-          {booksList.map((book: Book, i) => {
-            return <Card key={i} bookData={book} favourites={favouritesList} />;
-          })}
-        </ul>
+        <CardsList booksList={booksList} favouritesList={favouritesList} />
       )}
     </div>
   );
