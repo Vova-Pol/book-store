@@ -3,7 +3,7 @@ import './Favourites.css';
 import { useAppSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
 import { Book } from '../../store/types';
-import { Card } from '../../components/Card/Card';
+import { Card } from '../../components/Book/Book';
 
 export const Favourites = () => {
   const { favourites } = useAppSelector((state) => state.favouritesState);

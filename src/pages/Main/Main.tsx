@@ -3,10 +3,10 @@ import './Main.css';
 import { Book } from '../../store/types';
 import { useActions } from '../../hooks/useActions';
 import { useAppSelector } from '../../hooks/useTypedSelector';
-import { Card } from '../../components/Card/Card';
+import { Card } from '../../components/Book/Book';
 import { useLocalStorgae } from '../../hooks/useLocalStorage';
 import { FAVOURITES_LS_KEY } from '../../utils/constants';
-import { CardsList } from '../../components/App/CardsList/CardsList';
+import { CardsList } from '../../components/BooksList/BooksList';
 
 export const Main = () => {
   const { getBooksList } = useActions();

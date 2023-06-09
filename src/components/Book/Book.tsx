@@ -1,5 +1,5 @@
 import { FC, useState } from 'react';
-import './Card.css';
+import './Book.css';
 import { Book } from '../../store/types';
 
 import {

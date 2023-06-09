@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import './CardsList.css';
-import { Book } from '../../../store/types';
-import { Card } from '../../Card/Card';
+import './BooksList.css';
+import { Book } from '../../store/types';
+import { Card } from '../Book/Book';
 
 interface CardsListProps {
   booksList: Book[];
