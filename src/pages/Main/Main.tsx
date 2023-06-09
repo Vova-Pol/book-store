@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, FC } from 'react';
 import './Main.css';
 import { Book } from '../../store/types';
 import { useActions } from '../../hooks/useActions';
@@ -8,7 +8,7 @@ import { useLocalStorgae } from '../../hooks/useLocalStorage';
 import { FAVOURITES_LS_KEY } from '../../utils/constants';
 import { CardsList } from '../../components/BooksList/BooksList';
 
-export const Main = () => {
+export const Main: FC = () => {
   const { getBooksList } = useActions();
   const { booksList, error, isLoading } = useAppSelector(
     (state) => state.booksState,

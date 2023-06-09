@@ -1,8 +1,8 @@
-import React from 'react';
+import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import './Header.css';
 
-export const Header = () => {
+export const Header: FC = () => {
   return (
     <header className="header">
       <nav className="header__nav">

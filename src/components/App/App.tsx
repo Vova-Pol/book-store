@@ -1,11 +1,11 @@
-import React from 'react';
+import { FC } from 'react';
 import './App.css';
 import { Header } from '../Header/Header';
 import { Main } from '../../pages/Main/Main';
 import { Routes, Route } from 'react-router-dom';
 import { Favourites } from '../../pages/Favourites/Favourites';
 
-function App() {
+const App: FC = () => {
   return (
     <div className="app">
       <Header />
@@ -18,6 +18,6 @@ function App() {
       </main>
     </div>
   );
-}
+};
 
 export default App;

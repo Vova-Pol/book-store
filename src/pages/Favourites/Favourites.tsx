@@ -1,11 +1,11 @@
-import React from 'react';
+import { FC } from 'react';
 import './Favourites.css';
 import { useAppSelector } from '../../hooks/useTypedSelector';
 import { useActions } from '../../hooks/useActions';
 import { Book } from '../../store/types';
 import { Card } from '../../components/Book/Book';
 
-export const Favourites = () => {
+export const Favourites: FC = () => {
   const { favourites } = useAppSelector((state) => state.favouritesState);
 
   return (
