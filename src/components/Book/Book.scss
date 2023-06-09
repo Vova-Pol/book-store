@@ -1,28 +1,28 @@
 @import '../../styles/constants.scss';
 
-.card {
+.book {
   border-radius: 50px;
   background-color: $headerGrey;
   max-width: 250px;
 }
 
-.card__image {
+.book__image {
   width: 100%;
 }
 
-.card__info {
+.book__info {
   padding: 0 20px;
   text-align: center;
   margin-bottom: 15px;
 }
 
-.card__title {
+.book__title {
   @include title($h3Size, $h3Weight, $h3MarginBottom);
   color: $brownMid;
   min-height: calc($h3Size * 3);
 }
 
-.card__price {
+.book__price {
   background-color: $brownMid;
   border-radius: 10px;
   padding: 10px;
@@ -30,7 +30,7 @@
   font-weight: 200;
 }
 
-.card__buttons {
+.book__buttons {
   display: flex;
   justify-content: space-between;
   padding: 0 20px;
@@ -47,10 +47,10 @@
   }
 }
 
-.card__cart-button {
+.book__cart-button {
   width: 60%;
 }
 
-.card__favourite-button {
+.book__favourite-button {
   width: 30%;
 }

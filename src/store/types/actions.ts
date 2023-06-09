@@ -1,4 +1,4 @@
-import { Book } from './states';
+import { IBook } from './states';
 
 // Books
 
@@ -19,7 +19,7 @@ interface GetBooksErrorAction {
 
 interface GetBooksSuccessAction {
   type: ACTION_TYPES_GET_BOOKS.GET_BOOKS_SUCCESS;
-  payload: Book[];
+  payload: IBook[];
 }
 
 export type ActionGetBooks =
@@ -36,12 +36,12 @@ export enum ACTION_TYPES_FAVOURITES {
 
 interface AddToFavourites {
   type: ACTION_TYPES_FAVOURITES.ADD_TO_FAVOURITES;
-  payload: Book;
+  payload: IBook;
 }
 
 interface RemoveFromFavourites {
   type: ACTION_TYPES_FAVOURITES.REMOVE_FROM_FAVOURITES;
-  payload: Book;
+  payload: IBook;
 }
 
 export type ActionFavourites = RemoveFromFavourites | AddToFavourites;

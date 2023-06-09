@@ -1,21 +1,21 @@
 import { FC } from 'react';
 import './BooksList.css';
-import { Book } from '../../store/types';
-import { Card } from '../Book/Book';
+import { IBook } from '../../store/types';
+import { Book } from '../Book/Book';
 
-interface CardsListProps {
-  booksList: Book[];
-  favouritesList: Book[];
+interface BooksListProps {
+  booksList: IBook[];
+  favouritesList: IBook[];
 }
 
-export const CardsList: FC<CardsListProps> = ({
+export const BooksList: FC<BooksListProps> = ({
   booksList,
   favouritesList,
 }) => {
   return (
-    <ul className="cards-list">
-      {booksList.map((book: Book, i) => {
-        return <Card key={i} bookData={book} favourites={favouritesList} />;
+    <ul className="books-list">
+      {booksList.map((book: IBook, i) => {
+        return <Book key={i} bookData={book} favourites={favouritesList} />;
       })}
     </ul>
   );

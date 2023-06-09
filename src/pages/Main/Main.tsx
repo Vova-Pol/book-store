@@ -1,12 +1,10 @@
 import { useEffect, useState, FC } from 'react';
 import './Main.css';
-import { Book } from '../../store/types';
 import { useActions } from '../../hooks/useActions';
 import { useAppSelector } from '../../hooks/useTypedSelector';
-import { Card } from '../../components/Book/Book';
 import { useLocalStorgae } from '../../hooks/useLocalStorage';
 import { FAVOURITES_LS_KEY } from '../../utils/constants';
-import { CardsList } from '../../components/BooksList/BooksList';
+import { BooksList } from '../../components/BooksList/BooksList';
 
 export const Main: FC = () => {
   const { getBooksList } = useActions();
@@ -29,7 +27,7 @@ export const Main: FC = () => {
       {error && <h3>Что-то пошло не так...</h3>}
       {isLoading && <h3>Загрузка...</h3>}
       {booksList && (
-        <CardsList booksList={booksList} favouritesList={favouritesList} />
+        <BooksList booksList={booksList} favouritesList={favouritesList} />
       )}
     </div>
   );

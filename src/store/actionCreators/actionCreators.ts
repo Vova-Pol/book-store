@@ -1,7 +1,7 @@
 import {
   ACTION_TYPES_FAVOURITES,
   ACTION_TYPES_GET_BOOKS,
-  Book,
+  IBook,
 } from '../types';
 import { sendGetRequest } from '../../utils/utils';
 import {
@@ -31,7 +31,7 @@ export const getBooksList = () => {
   };
 };
 
-export const addToFavourites = (book: Book) => {
+export const addToFavourites = (book: IBook) => {
   return (dispatch: Dispatch) => {
     dispatch({
       type: ACTION_TYPES_FAVOURITES.ADD_TO_FAVOURITES,
@@ -54,7 +54,7 @@ export const addToFavourites = (book: Book) => {
   };
 };
 
-export const removeFromFavourites = (book: Book) => {
+export const removeFromFavourites = (book: IBook) => {
   return (dispatch: Dispatch) => {
     dispatch({
       type: ACTION_TYPES_FAVOURITES.REMOVE_FROM_FAVOURITES,
@@ -65,7 +65,7 @@ export const removeFromFavourites = (book: Book) => {
       if (localStorage.getItem(FAVOURITES_LS_KEY)) {
         const favourites = JSON.parse(localStorage.getItem(FAVOURITES_LS_KEY)!);
         const newFavourites = favourites.filter(
-          (fav: Book) => fav.isbn13 !== book.isbn13,
+          (fav: IBook) => fav.isbn13 !== book.isbn13,
         );
         localStorage.setItem(FAVOURITES_LS_KEY, JSON.stringify(newFavourites));
       }

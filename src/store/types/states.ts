@@ -3,10 +3,10 @@
 export interface BooksState {
   isLoading: boolean;
   error: string;
-  booksList: Book[];
+  booksList: IBook[];
 }
 
-export interface Book {
+export interface IBook {
   title: string;
   subtitle: string;
   isbn13: string;
@@ -18,5 +18,5 @@ export interface Book {
 // Favourites
 
 export interface FavouritesState {
-  favourites: Book[] | [];
+  favourites: IBook[] | [];
 }

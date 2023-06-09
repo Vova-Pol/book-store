@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import './Book.css';
-import { Book } from '../../store/types';
+import { IBook } from '../../store/types';
 
 import {
   AiOutlineShoppingCart,
@@ -9,14 +9,14 @@ import {
 } from 'react-icons/ai';
 import { useActions } from '../../hooks/useActions';
 
-interface CardProps {
-  bookData: Book;
-  favourites: Book[] | [];
+interface BookProps {
+  bookData: IBook;
+  favourites: IBook[] | [];
 }
 
-export const Card: FC<CardProps> = ({ bookData, favourites }) => {
+export const Book: FC<BookProps> = ({ bookData, favourites }) => {
   const [isLiked, setIsLiked] = useState(
-    favourites.some((fav: Book) => fav.isbn13 === bookData.isbn13),
+    favourites.some((fav: IBook) => fav.isbn13 === bookData.isbn13),
   );
 
   const { addToFavourites, removeFromFavourites } = useActions();
@@ -32,20 +32,20 @@ export const Card: FC<CardProps> = ({ bookData, favourites }) => {
   };
 
   return (
-    <li className="card">
-      <img className="card__image" src={bookData.image}></img>
-      <div className="card__info-container">
-        <div className="card__info">
-          <h3 className="card__title">{bookData.title}</h3>
-          <p className="card__price">{bookData.price}</p>
+    <li className="book">
+      <img className="book__image" src={bookData.image}></img>
+      <div className="book__info-container">
+        <div className="book__info">
+          <h3 className="book__title">{bookData.title}</h3>
+          <p className="book__price">{bookData.price}</p>
         </div>
-        <div className="card__buttons">
-          <button type="button" className="card__cart-button">
+        <div className="book__buttons">
+          <button type="button" className="book__cart-button">
             <AiOutlineShoppingCart />
           </button>
           <button
             type="button"
-            className="card__favourite-button"
+            className="book__favourite-button"
             onClick={handleLike}
           >
             {isLiked ? <AiFillHeart /> : <AiOutlineHeart />}
