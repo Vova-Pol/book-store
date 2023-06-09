@@ -8,6 +8,7 @@
 
 .book_layout_row {
   display: flex;
+  justify-content: center;
   width: 80%;
   max-width: 100%;
 }
@@ -63,4 +64,8 @@
 
 .book__favourite-button {
   @include button($backgroundDark, #fff, 30%);
+}
+
+.book__favourite-button_type_liked {
+  color: #f0a4a4;
 }

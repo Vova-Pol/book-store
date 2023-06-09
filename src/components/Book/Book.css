@@ -6,6 +6,7 @@
 
 .book_layout_row {
   display: flex;
+  justify-content: center;
   width: 80%;
   max-width: 100%;
 }
@@ -94,4 +95,8 @@
   opacity: 0.8;
   -webkit-transform: translateY(0);
           transform: translateY(0);
+}
+
+.book__favourite-button_type_liked {
+  color: #f0a4a4;
 }

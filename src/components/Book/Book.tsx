@@ -57,7 +57,11 @@ export const Book: FC<BookProps> = ({ bookData, favourites, isLayoutRow }) => {
           </button>
           <button
             type="button"
-            className="book__favourite-button"
+            className={
+              isLiked
+                ? 'book__favourite-button_type_liked book__favourite-button'
+                : 'book__favourite-button'
+            }
             onClick={handleLike}
           >
             {isLiked ? <AiFillHeart /> : <AiOutlineHeart />}
