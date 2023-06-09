@@ -9,11 +9,15 @@ export const Favourites: FC = () => {
   return (
     <div className="favourites">
       <h1 className="favourites__title">Избранное</h1>
-      <BooksList
-        booksList={favourites}
-        favouritesList={favourites}
-        isLayoutRow={true}
-      />
+      {favourites.length === 0 ? (
+        <p className="favourites__no-fav-text">В избранном пока ничего нет</p>
+      ) : (
+        <BooksList
+          booksList={favourites}
+          favouritesList={favourites}
+          isLayoutRow={true}
+        />
+      )}
     </div>
   );
 };
