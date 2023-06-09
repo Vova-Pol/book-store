@@ -23,7 +23,7 @@ export const BooksList: FC<BooksListProps> = ({
       {booksList.map((book: IBook, i) => {
         return (
           <Book
-            key={i}
+            key={book.isbn13}
             bookData={book}
             favourites={favouritesList}
             isLayoutRow={isLayoutRow}
