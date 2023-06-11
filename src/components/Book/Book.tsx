@@ -8,6 +8,7 @@ import {
   AiOutlineHeart,
 } from 'react-icons/ai';
 import { useActions } from '../../hooks/useActions';
+import { BookCounter } from '../BookCounter/BookCounter';
 
 interface BookProps {
   bookData: IBook;
@@ -19,6 +20,7 @@ export const Book: FC<BookProps> = ({ bookData, favourites, isLayoutRow }) => {
   const [isLiked, setIsLiked] = useState(
     favourites.some((fav: IBook) => fav.isbn13 === bookData.isbn13),
   );
+  const [isAddedToCart, setIsAddedToCart] = useState(false);
 
   const { addToFavourites, removeFromFavourites } = useActions();
 
@@ -30,6 +32,14 @@ export const Book: FC<BookProps> = ({ bookData, favourites, isLayoutRow }) => {
       addToFavourites(bookData);
       setIsLiked(true);
     }
+  };
+
+  const handleCart: React.MouseEventHandler<HTMLButtonElement> = (evt) => {
+    setIsAddedToCart(true);
+  };
+
+  const handleAmountZero = () => {
+    setIsAddedToCart(false);
   };
 
   return (
@@ -52,9 +62,17 @@ export const Book: FC<BookProps> = ({ bookData, favourites, isLayoutRow }) => {
           <p className="book__price">{bookData.price}</p>
         </div>
         <div className="book__buttons">
-          <button type="button" className="book__cart-button">
-            <AiOutlineShoppingCart />
-          </button>
+          {isAddedToCart ? (
+            <BookCounter handleOnZero={handleAmountZero} />
+          ) : (
+            <button
+              type="button"
+              className="book__cart-button"
+              onClick={handleCart}
+            >
+              <AiOutlineShoppingCart />
+            </button>
+          )}
           <button
             type="button"
             className={

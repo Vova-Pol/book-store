@@ -1,0 +1,29 @@
+.book-counter {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 60%;
+}
+
+.book-counter__button {
+  color: #fff;
+  background-color: #788585;
+  width: 30%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: none;
+  border-radius: 10px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.book-counter__button:hover {
+  opacity: 0.8;
+  -webkit-transform: translateY(0);
+          transform: translateY(0);
+}
+
+.book-counter__amount {
+  color: #38302e;
+}

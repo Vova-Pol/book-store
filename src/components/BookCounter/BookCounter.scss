@@ -1,0 +1,16 @@
+@import '../../styles/constants.scss';
+
+.book-counter {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 60%;
+}
+
+.book-counter__button {
+  @include button($backgroundDark, #fff, 30%);
+}
+
+.book-counter__amount {
+  color: $brownMid;
+}
