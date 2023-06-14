@@ -35,6 +35,16 @@ export const cartReducer = (
       isAlreadyInCart = state.cart.some(
         (cartBook: CartBook) => cartBook.book.isbn13 === action.payload.isbn13,
       );
+      const amountInCart = state.cart.find(
+        (cartBook: CartBook) => cartBook.book.isbn13 === action.payload.isbn13,
+      )?.quantity;
+
+      if (amountInCart === 1) {
+        const newCart = state.cart.filter(
+          (cartBook: CartBook) => cartBook.book.isbn13 != action.payload.isbn13,
+        );
+        return { ...state, cart: newCart };
+      }
 
       if (isAlreadyInCart) {
         const newCart = state.cart.map((cartBook: CartBook) => {

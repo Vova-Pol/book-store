@@ -10,6 +10,8 @@ import {
 import { useActions } from '../../hooks/useActions';
 import { BookCounter } from '../BookCounter/BookCounter';
 import { useAppSelector } from '../../hooks/useTypedSelector';
+import { useLocation } from 'react-router-dom';
+import { removeFromCart } from '../../store/actionCreators/actionCreators';
 
 interface BookProps {
   bookData: IBook;
@@ -17,6 +19,9 @@ interface BookProps {
 }
 
 export const Book: FC<BookProps> = ({ bookData, isLayoutRow }) => {
+  const location = useLocation();
+  const isOnCartPage = location.pathname === '/cart';
+
   const { favourites } = useAppSelector((state) => state.favouritesState);
   const [isLiked, setIsLiked] = useState(
     favourites.some((fav: IBook) => fav.isbn13 === bookData.isbn13),
@@ -26,6 +31,10 @@ export const Book: FC<BookProps> = ({ bookData, isLayoutRow }) => {
   const [isAddedToCart, setIsAddedToCart] = useState(
     cart.some((cartBook: CartBook) => cartBook.book.isbn13 === bookData.isbn13),
   );
+  const amountInCart = cart.find(
+    (cartBook: CartBook) => cartBook.book.isbn13 === bookData.isbn13,
+  )?.quantity;
+  const bookPrice = Number(bookData.price.replace('$', ''));
 
   const { addToFavourites, removeFromFavourites, addToCart } = useActions();
 
@@ -92,6 +101,17 @@ export const Book: FC<BookProps> = ({ bookData, isLayoutRow }) => {
           </button>
         </div>
       </div>
+      {isOnCartPage && amountInCart && (
+        <>
+          <div className="book__line"></div>
+          <div className="book__cart-info">
+            <span className="book__cart-quantity">{`В корзине: ${amountInCart} шт`}</span>
+            <span className="book__cart-total">{`Сумма: $${(
+              amountInCart * bookPrice
+            ).toFixed(2)}`}</span>
+          </div>
+        </>
+      )}
     </li>
   );
 };

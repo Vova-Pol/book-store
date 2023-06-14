@@ -101,3 +101,20 @@
 .book__favourite-button_type_liked {
   color: #f0a4a4;
 }
+
+.book__line {
+  margin: 15px;
+  border-left: 2px solid #788585;
+}
+
+.book__cart-info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  color: #38302e;
+  font-weight: 200;
+}
+
+.book__cart-quantity {
+  margin-bottom: 7px;
+}
