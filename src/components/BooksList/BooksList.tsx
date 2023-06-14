@@ -5,15 +5,10 @@ import { Book } from '../Book/Book';
 
 interface BooksListProps {
   booksList: IBook[];
-  favouritesList: IBook[];
   isLayoutRow: boolean;
 }
 
-export const BooksList: FC<BooksListProps> = ({
-  booksList,
-  favouritesList,
-  isLayoutRow,
-}) => {
+export const BooksList: FC<BooksListProps> = ({ booksList, isLayoutRow }) => {
   return (
     <ul
       className={
@@ -22,12 +17,7 @@ export const BooksList: FC<BooksListProps> = ({
     >
       {booksList.map((book: IBook, i) => {
         return (
-          <Book
-            key={book.isbn13}
-            bookData={book}
-            favourites={favouritesList}
-            isLayoutRow={isLayoutRow}
-          />
+          <Book key={book.isbn13} bookData={book} isLayoutRow={isLayoutRow} />
         );
       })}
     </ul>

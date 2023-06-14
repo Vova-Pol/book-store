@@ -15,13 +15,11 @@ export const Main: FC = () => {
     (state) => state.booksState,
   );
 
-  const { getLocalStorage } = useLocalStorgae();
-  const favouritesList = getLocalStorage(FAVOURITES_LS_KEY)
-    ? getLocalStorage(FAVOURITES_LS_KEY)
-    : [];
+  const state = useAppSelector((state) => state);
 
   useEffect(() => {
     getBooksList();
+    console.log(state);
   }, []);
 
   return (
@@ -48,11 +46,7 @@ export const Main: FC = () => {
       {error && <h3>Что-то пошло не так...</h3>}
       {isLoading && <h3>Загрузка...</h3>}
       {booksList && (
-        <BooksList
-          booksList={booksList}
-          favouritesList={favouritesList}
-          isLayoutRow={isLayoutRow}
-        />
+        <BooksList booksList={booksList} isLayoutRow={isLayoutRow} />
       )}
     </div>
   );

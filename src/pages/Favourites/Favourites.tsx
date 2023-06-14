@@ -12,11 +12,7 @@ export const Favourites: FC = () => {
       {favourites.length === 0 ? (
         <p className="favourites__no-fav-text">В избранном пока ничего нет</p>
       ) : (
-        <BooksList
-          booksList={favourites}
-          favouritesList={favourites}
-          isLayoutRow={true}
-        />
+        <BooksList booksList={favourites} isLayoutRow={true} />
       )}
     </div>
   );

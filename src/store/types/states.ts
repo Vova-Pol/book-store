@@ -20,3 +20,14 @@ export interface IBook {
 export interface FavouritesState {
   favourites: IBook[] | [];
 }
+
+// Cart
+
+export interface CartBook {
+  book: IBook;
+  quantity: number;
+}
+
+export interface CartState {
+  cart: CartBook[] | [];
+}

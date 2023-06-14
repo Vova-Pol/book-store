@@ -1,25 +1,43 @@
 import { FC, useState } from 'react';
 import './BookCounter.css';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
-import { MouseEventHandler } from 'react';
+import { CartBook, IBook } from '../../store/types';
+import { useActions } from '../../hooks/useActions';
+import { useLocalStorgae } from '../../hooks/useLocalStorage';
+import { CART_LS_KEY } from '../../utils/constants';
+import { useAppSelector } from '../../hooks/useTypedSelector';
 
 interface BookCounterProps {
   handleOnZero: () => void;
+  bookData: IBook;
 }
 
-export const BookCounter: FC<BookCounterProps> = ({ handleOnZero }) => {
-  const [amount, setAmount] = useState(1);
+export const BookCounter: FC<BookCounterProps> = ({
+  handleOnZero,
+  bookData,
+}) => {
+  const { cart } = useAppSelector((state) => state.cartState);
+
+  const cartBook = cart.find(
+    (cartBook: CartBook) => cartBook.book.isbn13 === bookData.isbn13,
+  );
+
+  const [amount, setAmount] = useState(cartBook ? cartBook.quantity : 1);
+
+  const { addToCart, removeFromCart } = useActions();
 
   const handlePlus: React.MouseEventHandler<HTMLButtonElement> = (evt) => {
     setAmount(amount + 1);
+    addToCart(bookData);
   };
 
   const handleMinus: React.MouseEventHandler<HTMLButtonElement> = (evt) => {
-    if (amount <= 1) {
+    if (amount === 1) {
       handleOnZero();
     } else {
       setAmount(amount - 1);
     }
+    removeFromCart(bookData);
   };
 
   return (

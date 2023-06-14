@@ -1,6 +1,6 @@
-import { FC, useState } from 'react';
+import { FC, useMemo, useState } from 'react';
 import './Book.css';
-import { IBook } from '../../store/types';
+import { CartBook, IBook } from '../../store/types';
 
 import {
   AiOutlineShoppingCart,
@@ -9,20 +9,25 @@ import {
 } from 'react-icons/ai';
 import { useActions } from '../../hooks/useActions';
 import { BookCounter } from '../BookCounter/BookCounter';
+import { useAppSelector } from '../../hooks/useTypedSelector';
 
 interface BookProps {
   bookData: IBook;
-  favourites: IBook[] | [];
   isLayoutRow: boolean;
 }
 
-export const Book: FC<BookProps> = ({ bookData, favourites, isLayoutRow }) => {
+export const Book: FC<BookProps> = ({ bookData, isLayoutRow }) => {
+  const { favourites } = useAppSelector((state) => state.favouritesState);
   const [isLiked, setIsLiked] = useState(
     favourites.some((fav: IBook) => fav.isbn13 === bookData.isbn13),
   );
-  const [isAddedToCart, setIsAddedToCart] = useState(false);
 
-  const { addToFavourites, removeFromFavourites } = useActions();
+  const { cart } = useAppSelector((state) => state.cartState);
+  const [isAddedToCart, setIsAddedToCart] = useState(
+    cart.some((cartBook: CartBook) => cartBook.book.isbn13 === bookData.isbn13),
+  );
+
+  const { addToFavourites, removeFromFavourites, addToCart } = useActions();
 
   const handleLike: React.MouseEventHandler<HTMLButtonElement> = (evt) => {
     if (isLiked) {
@@ -36,6 +41,7 @@ export const Book: FC<BookProps> = ({ bookData, favourites, isLayoutRow }) => {
 
   const handleCart: React.MouseEventHandler<HTMLButtonElement> = (evt) => {
     setIsAddedToCart(true);
+    addToCart(bookData);
   };
 
   const handleAmountZero = () => {
@@ -63,7 +69,7 @@ export const Book: FC<BookProps> = ({ bookData, favourites, isLayoutRow }) => {
         </div>
         <div className="book__buttons">
           {isAddedToCart ? (
-            <BookCounter handleOnZero={handleAmountZero} />
+            <BookCounter handleOnZero={handleAmountZero} bookData={bookData} />
           ) : (
             <button
               type="button"

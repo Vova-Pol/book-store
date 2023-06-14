@@ -45,3 +45,22 @@ interface RemoveFromFavourites {
 }
 
 export type ActionFavourites = RemoveFromFavourites | AddToFavourites;
+
+// Cart
+
+export enum ACTION_TYPES_CART {
+  ADD_TO_CART = 'ADD_TO_CART',
+  REMOVE_FROM_CART = 'REMOVE_FROM_CART',
+}
+
+interface AddToCart {
+  type: ACTION_TYPES_CART.ADD_TO_CART;
+  payload: IBook;
+}
+
+interface RemoveFromCart {
+  type: ACTION_TYPES_CART.REMOVE_FROM_CART;
+  payload: IBook;
+}
+
+export type ActionCart = AddToCart | RemoveFromCart;
