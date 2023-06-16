@@ -18,7 +18,7 @@ export interface IBook {
 // Favourites
 
 export interface FavouritesState {
-  favourites: IBook[] | [];
+  favourites: IBook[];
 }
 
 // Cart
@@ -29,5 +29,5 @@ export interface CartBook {
 }
 
 export interface CartState {
-  cart: CartBook[] | [];
+  cart: CartBook[];
 }
