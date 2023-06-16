@@ -21,3 +21,8 @@
 .main__column-button {
   margin-right: 10px;
 }
+
+.main__error-text,
+.main__loading-text {
+  @include title($h3Size, $h3Weight, $h3MarginBottom);
+}

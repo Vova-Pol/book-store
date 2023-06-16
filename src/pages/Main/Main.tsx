@@ -43,8 +43,8 @@ export const Main: FC = () => {
           <LuLayoutList />
         </button>
       </div>
-      {error && <h3>Что-то пошло не так...</h3>}
-      {isLoading && <h3>Загрузка...</h3>}
+      {error && <h3 className="main__error-text">Что-то пошло не так...</h3>}
+      {isLoading && <h3 className="main__loading-text">Загрузка...</h3>}
       {booksList && (
         <BooksList booksList={booksList} isLayoutRow={isLayoutRow} />
       )}
