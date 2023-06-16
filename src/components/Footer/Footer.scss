@@ -1,0 +1,32 @@
+@import '../../styles/constants.scss';
+
+.footer {
+  min-height: 200px;
+  background-color: $brownMid;
+  color: #fff;
+  font-weight: 200;
+  display: flex;
+  justify-content: space-between;
+  @include sectionPadding(20px, 20px);
+}
+
+.footer__title {
+  font-weight: 100;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer__link {
+  display: block;
+  margin-bottom: 30px;
+}
+
+.footer__link:hover {
+  transform: none;
+}
+
+.footer__author {
+  margin-top: auto;
+  font-weight: 100;
+  font-size: 16px;
+}

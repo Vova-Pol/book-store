@@ -1,0 +1,31 @@
+.footer {
+  min-height: 200px;
+  background-color: #38302e;
+  color: #fff;
+  font-weight: 200;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px 50px 20px 50px;
+}
+
+.footer__title {
+  font-weight: 100;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.footer__link {
+  display: block;
+  margin-bottom: 30px;
+}
+
+.footer__link:hover {
+  -webkit-transform: none;
+          transform: none;
+}
+
+.footer__author {
+  margin-top: auto;
+  font-weight: 100;
+  font-size: 16px;
+}
