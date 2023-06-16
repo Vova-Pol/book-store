@@ -1,5 +1,9 @@
 @import '../../styles/constants.scss';
 
+.cart {
+  @include sectionPadding(0, 50px);
+}
+
 .cart__title {
   @include title($h1Size, $h1Weight, $h1MarginBottom);
   text-shadow: 0px 1px 1px #716f6dcf;

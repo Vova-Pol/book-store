@@ -1,7 +1,7 @@
 @import '../../styles/constants.scss';
 
 .main {
-  @include sectionPadding(0, 0);
+  @include sectionPadding(0, 50px);
 }
 
 .main__title {

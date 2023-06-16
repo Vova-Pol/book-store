@@ -1,7 +1,7 @@
 @import '../../styles/constants.scss';
 
 .favourites {
-  @include sectionPadding(0, 0);
+  @include sectionPadding(0, 50px);
 }
 
 .favourites__title {
