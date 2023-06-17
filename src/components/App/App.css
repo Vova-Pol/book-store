@@ -23,13 +23,19 @@ ul {
 
 a {
   text-decoration: none;
+  font-weight: 200;
   color: #fff;
+  text-shadow: 0px 0px 20px rgba(0, 0, 0, 0.4784313725);
   transition: all 0.3s ease;
 }
 a:hover {
   opacity: 0.8;
   -webkit-transform: translateY(-4px);
           transform: translateY(-4px);
+}
+
+main {
+  min-height: 500px;
 }
 
 .app {

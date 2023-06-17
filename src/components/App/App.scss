@@ -25,9 +25,15 @@ ul {
 
 a {
   text-decoration: none;
+  font-weight: 200;
   color: $textColorMain;
+  text-shadow: 0px 0px 20px #0000007a;
   @include textHover(0.8, -4px);
   @include hoverTransition(0.3s);
+}
+
+main {
+  min-height: 500px;
 }
 
 .app {
