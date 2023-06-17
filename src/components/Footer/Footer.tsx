@@ -1,9 +1,10 @@
-import React from 'react';
 import './Footer.css';
 import { Link } from 'react-router-dom';
 import {
   AUTHOR_GITHUB_URL,
   SOURCE_CODE_GITHUB_URL,
+  TECH,
+  TECHS,
 } from '../../utils/constants';
 
 export const Footer = () => {
@@ -26,7 +27,20 @@ export const Footer = () => {
       <div className="footer__tech">
         <h4 className="footer__title">Технологии</h4>
         <ul className="footer__techs-list">
-          <li className="footer__techs-item"></li>
+          {TECHS.map((tech: TECH) => (
+            <li className="footer__techs-item" key={tech.title}>
+              <Link
+                to={tech.link}
+                className="footer__tech-link"
+                target="_blank"
+              >
+                <span
+                  className={`footer__tech-icon footer__tech-icon_type_${tech.title}`}
+                ></span>
+                {tech.title}
+              </Link>
+            </li>
+          ))}
         </ul>
       </div>
       <div className="footer__author">
