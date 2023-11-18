@@ -2,24 +2,18 @@ import { useEffect, useState, FC } from 'react';
 import './Main.css';
 import { useActions } from '../../hooks/useActions';
 import { useAppSelector } from '../../hooks/useTypedSelector';
-import { useLocalStorgae } from '../../hooks/useLocalStorage';
-import { FAVOURITES_LS_KEY } from '../../utils/constants';
 import { BooksList } from '../../components/BooksList/BooksList';
 import { LuLayoutGrid, LuLayoutList } from 'react-icons/lu';
 
 export const Main: FC = () => {
   const [isLayoutRow, setIsLayoutRow] = useState(false);
-
   const { getBooksList } = useActions();
   const { booksList, error, isLoading } = useAppSelector(
     (state) => state.booksState,
   );
 
-  const state = useAppSelector((state) => state);
-
   useEffect(() => {
     getBooksList();
-    console.log(state);
   }, []);
 
   return (
