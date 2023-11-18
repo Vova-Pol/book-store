@@ -2,7 +2,7 @@
   "name": "book-store-redux-oldschool",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vova-pol.github.io/book-store/",
+  "homepage": "https://vova-pol.github.io/",
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.10",
     "@testing-library/jest-dom": "^5.16.5",
