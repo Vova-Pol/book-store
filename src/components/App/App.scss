@@ -33,11 +33,10 @@ a {
 }
 
 main {
-  min-height: 500px;
+  min-height: calc(100vh - 280px - 230px);
 }
 
 .app {
-  max-width: 1600px;
   color: $textColorMain;
   font-size: 18px;
   font-family: 'Geologica', sans-serif;

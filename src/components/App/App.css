@@ -35,11 +35,10 @@ a:hover {
 }
 
 main {
-  min-height: 500px;
+  min-height: calc(100vh - 280px - 230px);
 }
 
 .app {
-  max-width: 1600px;
   color: #fff;
   font-size: 18px;
   font-family: "Geologica", sans-serif;
