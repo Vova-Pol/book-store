@@ -51,6 +51,7 @@ export type ActionFavourites = RemoveFromFavourites | AddToFavourites;
 export enum ACTION_TYPES_CART {
   ADD_TO_CART = 'ADD_TO_CART',
   REMOVE_FROM_CART = 'REMOVE_FROM_CART',
+  CLEAR_CART = 'CLEAR_CART',
 }
 
 interface AddToCart {
@@ -63,4 +64,8 @@ interface RemoveFromCart {
   payload: IBook;
 }
 
-export type ActionCart = AddToCart | RemoveFromCart;
+interface ClearCart {
+  type: ACTION_TYPES_CART.CLEAR_CART;
+}
+
+export type ActionCart = AddToCart | RemoveFromCart | ClearCart;

@@ -60,3 +60,9 @@ export const removeFromCart = (book: IBook) => {
     dispatch({ type: ACTION_TYPES_CART.REMOVE_FROM_CART, payload: book });
   };
 };
+
+export const clearCart = () => {
+  return (dispatch: Dispatch) => {
+    dispatch({ type: ACTION_TYPES_CART.CLEAR_CART });
+  };
+};

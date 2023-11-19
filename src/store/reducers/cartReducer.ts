@@ -61,6 +61,9 @@ export const cartReducer = (
         );
       }
 
+    case ACTION_TYPES_CART.CLEAR_CART:
+      return { ...state, cart: [] };
+
     default:
       return state;
   }
