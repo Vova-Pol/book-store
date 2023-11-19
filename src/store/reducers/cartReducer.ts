@@ -1,11 +1,8 @@
 import { ACTION_TYPES_CART, CartBook, CartState } from '../types';
-import { CART_LS_KEY } from '../../utils/constants';
 import { ActionCart } from '../types';
 
 const initialState: CartState = {
-  cart: localStorage.getItem(CART_LS_KEY)
-    ? JSON.parse(localStorage.getItem(CART_LS_KEY)!)
-    : [],
+  cart: [],
 };
 
 export const cartReducer = (
@@ -13,7 +10,6 @@ export const cartReducer = (
   action: ActionCart,
 ): CartState => {
   let isAlreadyInCart;
-  let newState;
   switch (action.type) {
     case ACTION_TYPES_CART.ADD_TO_CART:
       isAlreadyInCart = state.cart.some(
@@ -27,20 +23,12 @@ export const cartReducer = (
           return cartBook;
         });
 
-        newState = { ...state, cart: newCart };
-
-        localStorage.setItem(CART_LS_KEY, JSON.stringify(newState.cart));
-
-        return newState;
+        return { ...state, cart: newCart };
       } else {
         const newCart = [...state.cart];
         newCart.push({ book: action.payload, quantity: 1 });
 
-        newState = { ...state, cart: newCart };
-
-        localStorage.setItem(CART_LS_KEY, JSON.stringify(newState.cart));
-
-        return newState;
+        return { ...state, cart: newCart };
       }
 
     case ACTION_TYPES_CART.REMOVE_FROM_CART:
@@ -56,11 +44,7 @@ export const cartReducer = (
           (cartBook: CartBook) => cartBook.book.isbn13 != action.payload.isbn13,
         );
 
-        newState = { ...state, cart: newCart };
-
-        localStorage.setItem(CART_LS_KEY, JSON.stringify(newState.cart));
-
-        return newState;
+        return { ...state, cart: newCart };
       }
 
       if (isAlreadyInCart) {
@@ -70,11 +54,7 @@ export const cartReducer = (
           return cartBook;
         });
 
-        newState = { ...state, cart: newCart };
-
-        localStorage.setItem(CART_LS_KEY, JSON.stringify(newState.cart));
-
-        return newState;
+        return { ...state, cart: newCart };
       } else {
         throw new Error(
           'Вы пытаетесь удалить из корзины товар, которого в ней нет',

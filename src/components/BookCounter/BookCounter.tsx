@@ -3,8 +3,6 @@ import './BookCounter.css';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 import { CartBook, IBook } from '../../store/types';
 import { useActions } from '../../hooks/useActions';
-import { useLocalStorgae } from '../../hooks/useLocalStorage';
-import { CART_LS_KEY } from '../../utils/constants';
 import { useAppSelector } from '../../hooks/useTypedSelector';
 
 interface BookCounterProps {

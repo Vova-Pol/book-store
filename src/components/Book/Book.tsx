@@ -37,7 +37,7 @@ export const Book: FC<BookProps> = ({ bookData, isLayoutRow }) => {
 
   const { addToFavourites, removeFromFavourites, addToCart } = useActions();
 
-  const handleLike: React.MouseEventHandler<HTMLButtonElement> = (evt) => {
+  const handleLike: React.MouseEventHandler<HTMLButtonElement> = () => {
     if (isLiked) {
       removeFromFavourites(bookData);
       setIsLiked(false);
@@ -47,7 +47,7 @@ export const Book: FC<BookProps> = ({ bookData, isLayoutRow }) => {
     }
   };
 
-  const handleCart: React.MouseEventHandler<HTMLButtonElement> = (evt) => {
+  const handleCart: React.MouseEventHandler<HTMLButtonElement> = () => {
     setIsAddedToCart(true);
     addToCart(bookData);
   };
