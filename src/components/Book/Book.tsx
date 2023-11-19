@@ -1,4 +1,4 @@
-import { FC, useMemo, useState } from 'react';
+import { FC, useState } from 'react';
 import './Book.css';
 import { CartBook, IBook } from '../../store/types';
 
@@ -11,7 +11,6 @@ import { useActions } from '../../hooks/useActions';
 import { BookCounter } from '../BookCounter/BookCounter';
 import { useAppSelector } from '../../hooks/useTypedSelector';
 import { useLocation } from 'react-router-dom';
-import { removeFromCart } from '../../store/actionCreators/actionCreators';
 
 interface BookProps {
   bookData: IBook;
