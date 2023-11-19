@@ -6,6 +6,7 @@ import { Routes, Route } from 'react-router-dom';
 import { Favourites } from '../../pages/Favourites/Favourites';
 import { Cart } from '../../pages/Cart/Cart';
 import { Footer } from '../Footer/Footer';
+import { Success } from '../../pages/Success/Success';
 
 const App: FC = () => {
   return (
@@ -16,6 +17,7 @@ const App: FC = () => {
           <Route path="/" element={<Main />} />
           <Route path="/favourites" element={<Favourites />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/success" element={<Success />} />
         </Routes>
       </main>
       <Footer />
