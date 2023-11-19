@@ -3,7 +3,9 @@ import { CART_LS_KEY } from '../../utils/constants';
 import { ActionCart } from '../types';
 
 const initialState: CartState = {
-  cart: [],
+  cart: localStorage.getItem(CART_LS_KEY)
+    ? JSON.parse(localStorage.getItem(CART_LS_KEY)!)
+    : [],
 };
 
 export const cartReducer = (
@@ -11,6 +13,7 @@ export const cartReducer = (
   action: ActionCart,
 ): CartState => {
   let isAlreadyInCart;
+  let newState;
   switch (action.type) {
     case ACTION_TYPES_CART.ADD_TO_CART:
       isAlreadyInCart = state.cart.some(
@@ -24,11 +27,20 @@ export const cartReducer = (
           return cartBook;
         });
 
-        return { ...state, cart: newCart };
+        newState = { ...state, cart: newCart };
+
+        localStorage.setItem(CART_LS_KEY, JSON.stringify(newState.cart));
+
+        return newState;
       } else {
-        const newCart: CartBook[] = state.cart;
+        const newCart = [...state.cart];
         newCart.push({ book: action.payload, quantity: 1 });
-        return { ...state, cart: newCart };
+
+        newState = { ...state, cart: newCart };
+
+        localStorage.setItem(CART_LS_KEY, JSON.stringify(newState.cart));
+
+        return newState;
       }
 
     case ACTION_TYPES_CART.REMOVE_FROM_CART:
@@ -43,7 +55,12 @@ export const cartReducer = (
         const newCart = state.cart.filter(
           (cartBook: CartBook) => cartBook.book.isbn13 != action.payload.isbn13,
         );
-        return { ...state, cart: newCart };
+
+        newState = { ...state, cart: newCart };
+
+        localStorage.setItem(CART_LS_KEY, JSON.stringify(newState.cart));
+
+        return newState;
       }
 
       if (isAlreadyInCart) {
@@ -52,7 +69,12 @@ export const cartReducer = (
             cartBook.quantity--;
           return cartBook;
         });
-        return { ...state, cart: newCart };
+
+        newState = { ...state, cart: newCart };
+
+        localStorage.setItem(CART_LS_KEY, JSON.stringify(newState.cart));
+
+        return newState;
       } else {
         throw new Error(
           'Вы пытаетесь удалить из корзины товар, которого в ней нет',
